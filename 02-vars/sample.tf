@@ -48,10 +48,17 @@ variable "COLORMAPS" {
 }
 
 output "COLOR_FROM_LIST" {
-  count = 3
   value = var.COLORS[2]
 }
 
 output "COLOR_FROM_MAP" {
   value = var.COLORMAPS["RED"]
+}
+
+// Access variables from shell environment variables
+
+variable "FRUIT_NAME" {}
+
+output "FRUIT_NAME" {
+  value = var.FRUIT_NAME
 }
