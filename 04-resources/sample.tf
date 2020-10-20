@@ -3,7 +3,7 @@ resource "null_resource" "nothing" {
 }
 
 resource "aws_instance" "sample" {
-  ami = "ami-02a6e93f26fb6d31b"
+  ami = "ami-0ed9d2e6b42fd9de7"
   instance_type = "t2.micro"
   lifecycle {
     create_before_destroy = true
