@@ -1,3 +1,4 @@
+####### DATA TYPES
 // This is a string
 variable "color" {
   default = "Red"
@@ -28,4 +29,28 @@ output "BOOLAEAN" {
 // Variable gives in quotes can be accessed only with ${} interpolation
 output "LINE" {
   value = "Color is ${var.color}"
+}
+
+###### Variable Types
+//list
+variable "COLORS" {
+  default = ["RED", "GREEN", "YELLOW", 40, false]
+}
+// A list supports different data types.
+
+//Map
+variable "COLORMAPS" {
+  default = {
+    RED = 31
+    GREEN = 32
+    YELLOW = 33
+  }
+}
+
+output "COLOR_FROM_LIST" {
+  value = var.COLORS[2]
+}
+
+output "COLOR_FROM_MAP" {
+  value = var.COLORMAPS["RED"]
 }
