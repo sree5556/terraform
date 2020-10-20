@@ -5,6 +5,9 @@ resource "null_resource" "nothing" {
 resource "aws_instance" "sample" {
   ami = "ami-02a6e93f26fb6d31b"
   instance_type = "t2.micro"
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 // Here ami is a argument, instance_type is an argument
