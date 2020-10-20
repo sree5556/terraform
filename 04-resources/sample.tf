@@ -25,17 +25,20 @@ resource "aws_security_group" "allow_tls" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
 
-  for_each = {
-    80 = "1.1.1.1/32"
-    443 = "2.2.2.2/32"
-  }
 
-  ingress {
-    description = "TLS from VPC"
-    from_port   = each.key
-    to_port     = each.key
-    protocol    = "tcp"
-    cidr_blocks = [each.value]
+
+  dynamic "ingress" {
+    iterator = port
+    for_each = {
+      80 = "1.1.1.1/32"
+      443 = "2.2.2.2/32"
+    }
+    content {
+      from_port   = port.key
+      to_port     = port.key
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
   }
 
   egress {
@@ -49,3 +52,4 @@ resource "aws_security_group" "allow_tls" {
     Name = "allow_tls"
   }
 }
+
