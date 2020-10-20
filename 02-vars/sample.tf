@@ -48,6 +48,7 @@ variable "COLORMAPS" {
 }
 
 output "COLOR_FROM_LIST" {
+  count = 3
   value = var.COLORS[2]
 }
 
