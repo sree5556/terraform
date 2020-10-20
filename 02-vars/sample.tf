@@ -62,3 +62,14 @@ variable "FRUIT_NAME" {}
 output "FRUIT_NAME" {
   value = var.FRUIT_NAME
 }
+
+// When we prompt an input from user, and if he gives a wrong input then a validation should happen.
+variable "image_id" {
+  type        = string
+  description = "The id of the machine image (AMI) to use for the server."
+
+  validation {
+    condition     = length(var.image_id) > 4 && substr(var.image_id, 0, 4) == "ami-"
+    error_message = "The image_id value must be a valid AMI id, starting with \"ami-\"."
+  }
+}
