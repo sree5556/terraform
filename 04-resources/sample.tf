@@ -3,7 +3,7 @@ resource "null_resource" "nothing" {
 }
 
 resource "aws_instance" "sample" {
-  ami = "ami-08de1b06f81eded1e"
+  ami = "ami-02a6e93f26fb6d31b"
   instance_type = "t2.micro"
 }
 
