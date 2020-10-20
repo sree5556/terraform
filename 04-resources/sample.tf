@@ -10,9 +10,9 @@ resource "null_resource" "nothing" {
 
 // Here ami is a argument, instance_type is an argument
 
-output "PUBLIC_IP" {
-  value = aws_instance.sample.*.public_ip
-}
+//output "PUBLIC_IP" {
+//  value = aws_instance.sample.*.public_ip
+//}
 
 // .public_ip is a attribute.
 
