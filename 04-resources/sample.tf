@@ -19,3 +19,33 @@ output "PUBLIC_IP" {
 provider "aws" {
   region = "us-east-2"
 }
+
+
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+
+  for_each = {
+    80 = "1.1.1.1/32"
+    443 = "2.2.2.2/32"
+  }
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = each.key
+    to_port     = each.key
+    protocol    = "tcp"
+    cidr_blocks = [each.value]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
