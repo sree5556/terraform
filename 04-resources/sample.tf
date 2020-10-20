@@ -1,5 +1,5 @@
 resource "null_resource" "nothing" {
-  depends_on = [aws_instance.sample]
+  //depends_on = [aws_instance.sample]
 }
 
 //resource "aws_instance" "sample" {
