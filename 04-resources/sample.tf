@@ -37,7 +37,7 @@ resource "aws_security_group" "allow_tls" {
       from_port   = port.key
       to_port     = port.key
       protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      cidr_blocks = [port.value]
     }
   }
 
