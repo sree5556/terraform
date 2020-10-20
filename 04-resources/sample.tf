@@ -2,11 +2,10 @@ resource "null_resource" "nothing" {
   //depends_on = [aws_instance.sample]
 }
 
-//resource "aws_instance" "sample" {
-//  count = 2
-//  ami = "ami-0ed9d2e6b42fd9de7"
-//  instance_type = "t2.micro"
-//}
+resource "aws_instance" "sample" {
+  ami = "ami-08de1b06f81eded1e"
+  instance_type = "t2.micro"
+}
 
 // Here ami is a argument, instance_type is an argument
 
