@@ -5,6 +5,7 @@ resource "null_resource" "nothing" {
 resource "aws_instance" "sample" {
   ami = "ami-0ed9d2e6b42fd9de7"
   instance_type = "t2.micro"
+  vpc_security_group_ids = [""]
 
   lifecycle {
     create_before_destroy = true
@@ -47,8 +48,10 @@ resource "aws_security_group" "allow_tls" {
   dynamic "ingress" {
     iterator = port
     for_each = {
-      80 = "1.1.1.1/32"
+      80 = "0.0.0.0/0"
       443 = "2.2.2.2/32"
+      22 = "0.0.0.0/0"
+
     }
     content {
       from_port   = port.key
@@ -57,6 +60,7 @@ resource "aws_security_group" "allow_tls" {
       cidr_blocks = [port.value]
     }
   }
+
 
   egress {
     from_port   = 0
