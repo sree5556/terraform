@@ -16,5 +16,5 @@ output "PUBLIC_IP" {
 // .public_ip is a attribute.
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-2"
 }
