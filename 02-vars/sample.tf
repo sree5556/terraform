@@ -25,3 +25,7 @@ output "BOOLAEAN" {
   value = var.bool
 }
 
+// Variable gives in quotes can be accessed only with ${} interpolation
+output "LINE" {
+  value = "Color is ${var.color}"
+}
