@@ -10,3 +10,6 @@ resource "aws_instance" "sample" {
 output "PUBLIC_IP" {
   value = aws_instance.sample.public_ip
 }
+
+// .public_ip is a attribute.
+
